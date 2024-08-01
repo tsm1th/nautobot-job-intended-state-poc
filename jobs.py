@@ -9,7 +9,7 @@ from django.core.exceptions import (
 )
 from django.db import transaction
 from django.db.utils import IntegrityError
-from nautobot.apps.jobs import Job, TextVar
+from nautobot.apps.jobs import Job, TextVar, register_jobs
 
 
 name = "Intended State"
@@ -131,3 +131,5 @@ class IntendedState(Job):
                     "created" if created else "updated",
                     extra={"object": obj},
                 )
+
+register_jobs(IntendedState)
